@@ -53,8 +53,7 @@ def main():
 	print "Generating distribution......"
 	goDis_c=os.system("python2 GoDistribution.py"+ " "+ hit2terms_file+" "+gos_buscados+" "+counted_GOs+" "+go2contigs_file)
 	print "Generating Pie Char"
-	charPie=os.system("python2 
-	 Utilities/GraphPie.py "+ counted_GOs +" "+ out_img)
+	charPie=os.system("python2 Utilities/GraphPie.py "+ counted_GOs +" "+ out_img)
 	print "Generating PDF report"
 	genPDF=os.system("python2  Utilities/PdfGen.py "+ counted_GOs +" "+ out_pdf+" "+out_img)
 
