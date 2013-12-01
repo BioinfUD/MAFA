@@ -12,7 +12,7 @@ cd Reference_dbs
 echo Downloading Non-redundant database from NCBI server
 wget ftp://ftp.ncbi.nlm.nih.gov/blast/db/FASTA/nr.gz
 echo uncompressing file
-gunzip nr.gz  
+gunzip nr.gz  	
 echo Creating index
 makeblastdb -in nr -dbtype prot
 #Descarga uniprot
@@ -21,3 +21,6 @@ wget ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/c
 gunzip  uniprot_sprot.fasta.gz
 echo Creating index
 makeblastdb -in uniprot_sprot.fasta -dbtype prot
+echo Bringing mapping2db process to foregroung
+fg 1
+fg 1

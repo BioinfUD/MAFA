@@ -28,8 +28,8 @@ def main():
 	go2contigs_file="%s/go2contigs.csv" % out_dir
 	out_img="%s/output.png" % out_dir
 	out_pdf="%s/Report.pdf" % out_dir
-	salida_csv='%s/query2hits.csv' % outdir
-	salida_xml='%s/query2hits.xml' % outdir
+	salida_csv='%s/query2hits.csv' % out_dir
+	salida_xml='%s/query2hits.xml' % out_dir
 	archivo_entrada=salida_csv
 	print "The output dir is: %s" % out_dir
 	print "The  XML output of blast will be on " % salida_xml
@@ -53,7 +53,8 @@ def main():
 	print "Generating distribution......"
 	goDis_c=os.system("python2 GoDistribution.py"+ " "+ hit2terms_file+" "+gos_buscados+" "+counted_GOs+" "+go2contigs_file)
 	print "Generating Pie Char"
-	charPie=os.system("python2  Utilities/GraphPie.py "+ counted_GOs +" "+ out_img)
+	charPie=os.system("python2 
+	 Utilities/GraphPie.py "+ counted_GOs +" "+ out_img)
 	print "Generating PDF report"
 	genPDF=os.system("python2  Utilities/PdfGen.py "+ counted_GOs +" "+ out_pdf+" "+out_img)
 
