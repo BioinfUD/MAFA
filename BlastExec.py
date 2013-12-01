@@ -21,6 +21,7 @@ def main():
     query_file=sys.argv[1]
     db_file=sys.argv[2]
     prefix=sys.argv[3]
+    threads=Config.max_threads
     sendblast(query_file, db_file, threads, prefix)
     
 main()
