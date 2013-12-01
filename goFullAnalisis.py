@@ -45,7 +45,6 @@ def main():
 	print "Creating output directory..."
 	mkdir_c=os.system('mkdir %s' % out_dir)
 	print "Executing BLAST"
-	blast_c=os.system('python BlastExec.py %s %s %s' % in_file, db_blast, salida_xml)
 	print "Getting top hits and writing csv file"
 	convert_c=os.system("python Utilities/BlastXML2CSVCustom.py %s %s" % (salida_xml, salida_csv ))
 	print "Doing associations bettwen hits and gos...."
