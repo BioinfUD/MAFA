@@ -32,8 +32,8 @@ def main():
 	salida_xml='%s/query2hits.xml' % out_dir
 	archivo_entrada=salida_csv
 	print "The output dir is: %s" % out_dir
-	print "The  XML output of blast will be on " % salida_xml
-	print "The  CSV output of blast will be on " % salida_csv
+	print "The  XML output of blast will be on %s" % salida_xml
+	print "The  CSV output of blast will be on %s" % salida_csv
 	print "The GO terms wanted are in: %s" % gos_buscados
 	print "The input file is: %s" % archivo_entrada
 	print "The file containing relation bettwen sequences and terms is: %s" % hit2terms_file
