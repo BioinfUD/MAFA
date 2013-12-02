@@ -3,7 +3,7 @@
 #GICOGE Research Group
 #Udistrital
 
-import sys
+import sys,os
 sys.path.append(os.path.split(sys.argv[0])[0])
 from Bio.Blast import NCBIXML
 ##

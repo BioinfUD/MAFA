@@ -28,3 +28,4 @@ def connect():
 		quit()
 	cursor = db.cursor(MySQLdb.cursors.DictCursor) 
 	return cursor
+	
