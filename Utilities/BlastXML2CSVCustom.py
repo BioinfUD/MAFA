@@ -15,7 +15,7 @@ def usage():
 
 def convertandwrite(in_file, outfile):
 	csv_file=open(outfile,"w")
-	xml_in=open(in_file,"w")
+	xml_in=open(in_file,"r")
 	count=0
 	records=NCBIXML.parse(xml_in)
 	for record in records:

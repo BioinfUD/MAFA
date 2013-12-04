@@ -11,7 +11,7 @@ def usage():
     exit()
 
 def sendblast(query_file, db_file, threads, prefix):
-    command="blastx -query %s -outfmt 7 -db %s -evalue 1e-5 -num_threads %s -out %s" % (query_file, db_file, threads, prefix)
+    command="blastx -query %s -outfmt 7 -db %s -evalue 1e-3 -num_threads %s -out %s" % (query_file, db_file, threads, prefix)
     print "Excuting alignments with blast"
     os.system(command)
 
