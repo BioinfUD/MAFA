@@ -1,7 +1,8 @@
 import os
 import sys
 import Config
- from datetime import datetime
+from datetime import datetime
+from time import sleep
 def usage():
 	print """ This is the wrapper to get the GO distribution from a BLAST result
 	goFullAnalisis.py in_file.fasta wanted_gos out_dir refseq|uniprot
@@ -47,22 +48,22 @@ def main():
 	mkdir_c=os.system('mkdir %s' % out_dir)
 	print "Executing BLAST"
 	ti=datetime.now()
-	#blast_c=os.system('python BlastExec.py %s %s %s' % (in_file, db_blast, salida_xml))
+	blast_c=os.system('python BlastExec.py %s %s %s' % (in_file, db_blast, salida_xml))
 	blast_time=ti-datetime.now()
 	print "Getting top hits and writing csv file"
 	ti=datetime.now()
-	#convert_c=os.system("python Utilities/BlastXML2CSVCustom.py %s %s" % (salida_xml, salida_csv ))
+	convert_c=os.system("python Utilities/BlastXML2CSVCustom.py %s %s" % (salida_xml, salida_csv ))
 	convert_time=ti-datetime.now()
 	print "Doing associations bettwen hits and gos...."
 	ti=datetime.now()
-	#hit2go_c=os.system("python hits2go.py"+" "+archivo_entrada+" "+hit2terms_file)
+	hit2go_c=os.system("python hits2go.py"+" "+archivo_entrada+" "+hit2terms_file)
 	h2g_time=ti-datetime.now()
 	print "Generating distribution......"
 	ti=datetime.now()
-	#goDis_c=os.system("python2 GoDistribution.py"+ " "+ hit2terms_file+" "+gos_buscados+" "+counted_GOs+" "+go2contigs_file)
+	goDis_c=os.system("python2 GoDistribution.py"+ " "+ hit2terms_file+" "+gos_buscados+" "+counted_GOs+" "+go2contigs_file)
 	goDis_time=ti-datetime.now()
 	print "Generating Pie Char"
-	#charPie=os.system("python2 Utilities/GraphPie.py "+ counted_GOs +" "+ out_img)
+	charPie=os.system("python2 Utilities/GraphPie.py "+ counted_GOs +" "+ out_img)
 	print "Generating PDF report"
 	try:
 		genPDF=os.system("python2  Utilities/PdfGen.py "+ counted_GOs +" "+ out_pdf+" "+out_img)

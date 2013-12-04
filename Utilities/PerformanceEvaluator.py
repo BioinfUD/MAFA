@@ -38,7 +38,7 @@ def main():
             out_pdf="%s/Report.pdf" % out_dir
             salida_csv='%s/query2hits.csv' % out_dir
             salida_xml='%s/query2hits.xml' % out_dir
-            analisiscommand="goFullAnalisis.py %s %s %s %s > %s.log " % (selectedSeq, wanted_gos, out_dir, db_blast, out_dir)
+            analisiscommand="python2 goFullAnalisis.py %s %s %s %s > %s.log " % (selectedSeq, wanted_gos, out_dir, db_blast, out_dir)
             os.system(analisiscommand)
             print "Executing %s " % analisiscommand
     
