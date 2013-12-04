@@ -8,7 +8,7 @@ sys.path.append(os.path.split(sys.argv[0])[0])
 from Bio.Blast import NCBIXML
 ##
 def usage():
-	"""  This script converts a XML input of BLAST to a custom CSV format ready to do the functional annotation with Gene Onlotogy
+	print """  This script converts a XML input of BLAST to a custom CSV format ready to do the functional annotation with Gene Onlotogy
 	BlastXML2CSVCustom.py blast_xml_input.xml querys2hits.csv
 	"""
 	exit()

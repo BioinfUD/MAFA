@@ -11,6 +11,9 @@ def usage():
 #	GoDistribution.py contigs2go.csv GOswanted Counted_GOs.tab go2contigs.csv
 # 	hits2go.py querys2hits.csv hits2terms.csv
 
+def td2seconds(td):
+	seconds=(td.days*1440)+td.seconds
+	return seconds
 
 def main():
 	if len(sys.argv)!=5:
@@ -69,10 +72,10 @@ def main():
 		genPDF=os.system("python2  Utilities/PdfGen.py "+ counted_GOs +" "+ out_pdf+" "+out_img)
 	except:
 		print "Unable to create PDF report"
-	print "Blast execution time: %s , Used database: %s" % (str(blast_time.total_seconds()), sys.argv[4])
-	print "Best hit execution time: %s" % (str(convert_time.total_seconds()))
-	print "Hits 2 GO execution time: %s" % (str(h2g_time.total_seconds()))
-	print "Term distribution execution time %s" % (str(goDis_time.total_seconds()))
+	print "Blast execution time: %s , Used database: %s" % (str(td2seconds(blast_time)), sys.argv[4])
+	print "Best hit execution time: %s" % (str(td2seconds(convert_time)))
+	print "Hits 2 GO execution time: %s" % (str(td2seconds(h2g_time)))
+	print "Term distribution execution time %s" % (str(td2seconds(goDis_time)))
 
 main()
 
