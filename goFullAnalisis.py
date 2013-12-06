@@ -79,7 +79,7 @@ def main():
 """	print "Blast execution time: %s , Used database: %s" % (str(td2seconds(blast_time)), sys.argv[4])
 	print "Best hit execution time: %s" % (str(td2seconds(convert_time)))
 	print "Hits 2 GO execution time: %s" % (str(td2seconds(h2g_time)))
-	print "Term distribution execution time %s" % (str(td2seconds(goDis_time))) ""
+	print "Term distribution execution time %s" % (str(td2seconds(goDis_time))) """
 
 main()
 
