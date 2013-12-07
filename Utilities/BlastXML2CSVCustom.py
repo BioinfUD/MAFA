@@ -23,7 +23,7 @@ def convertandwrite(in_file, outfile):
 			#Solo toma la parte del query id que da el id del query real.
 			query_id=record.query.split(" ")[0]
 			hit_def=alignment.hit_def
-			csv_file.write('"%s","%s"' % (query_id, hit_def))
+			csv_file.write('"%s","%s \n"' % (query_id, hit_def))
 			count=count+1
 	return count
 

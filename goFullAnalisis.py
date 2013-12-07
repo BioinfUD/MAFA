@@ -12,7 +12,7 @@ def usage():
 # 	hits2go.py querys2hits.csv hits2terms.csv
 
 def td2seconds(td):
-	seconds=(td.days*1440)+td.seconds
+	seconds=(td.days*1440*60)+td.seconds
 	return seconds
 
 def main():
@@ -52,19 +52,19 @@ def main():
 	print "Executing BLAST"
 	ti=datetime.now()
 	blast_c=os.system('python BlastExec.py %s %s %s' % (in_file, db_blast, salida_xml))
-	blast_time=ti-datetime.now()
+	blast_time=datetime.now()-ti
 	print "Getting top hits and writing csv file"
 	ti=datetime.now()
 	convert_c=os.system("python Utilities/BlastXML2CSVCustom.py %s %s" % (salida_xml, salida_csv ))
-	convert_time=ti-datetime.now()
+	convert_time=datetime.now()-ti
 	print "Doing associations bettwen hits and gos...."
 	ti=datetime.now()
 	hit2go_c=os.system("python hits2go.py"+" "+archivo_entrada+" "+hit2terms_file)
-	h2g_time=ti-datetime.now()
+	h2g_time=datetime.now()-ti
 	print "Generating distribution......"
 	ti=datetime.now()
 	goDis_c=os.system("python2 GoDistribution.py"+ " "+ hit2terms_file+" "+gos_buscados+" "+counted_GOs+" "+go2contigs_file)
-	goDis_time=ti-datetime.now()
+	goDis_time=datetime.now()-ti
 	print "Generating Pie Char"
 	charPie=os.system("python2 Utilities/GraphPie.py "+ counted_GOs +" "+ out_img)
 	print "Generating PDF report"
@@ -72,15 +72,30 @@ def main():
 		genPDF=os.system("python2  Utilities/PdfGen.py "+ counted_GOs +" "+ out_pdf+" "+out_img)
 	except:
 		print "Unable to create PDF report"
-	print "Blast execution time: %s , Used database: %s" % (str(blast_time), sys.argv[4])
-	print "Best hit execution time: %s" % (str(convert_time))
-	print "Hits 2 GO execution time: %s" % (str(h2g_time))
-	print "Term distribution execution time %s" % (str(goDis_time)) 
-"""	print "Blast execution time: %s , Used database: %s" % (str(td2seconds(blast_time)), sys.argv[4])
+	print "Blast execution time: %s , Used database: %s" % (str(td2seconds(blast_time)), sys.argv[4])
 	print "Best hit execution time: %s" % (str(td2seconds(convert_time)))
 	print "Hits 2 GO execution time: %s" % (str(td2seconds(h2g_time)))
-	print "Term distribution execution time %s" % (str(td2seconds(goDis_time))) """
+	print "Term distribution execution time %s" % (str(td2seconds(goDis_time))) 
+	"""print "Blast execution time: %s , Used database: %s" % (str(blast_time), sys.argv[4])
+	print "Best hit execution time: %s" % (str(convert_time))
+	print "Hits 2 GO execution time: %s" % (str(h2g_time))
+	print "Term distribution execution time %s" % (str(goDis_time))""" 
 
 main()
 
+
+def timedelta2seconds(cadena):
+	dias=cadena.split("day")[0].split(" ")[-2]
+	numeros=cadena.split("day")[1].replace(",","").replace(" ","")
+	horas=numeros.split(":")[0]
+	minutos=numeros.split(":")[1]
+	segundos=numeros.split(":")[2].split(".")[0]
+	print dias +" "+  horas+ " "+ minutos +" "+ segundos
+	t=timedelta(days=int(dias), minutes=int(minutos), seconds=int(segundos), hours=int(horas))
+	print t
+	print -(t.total_seconds())
+
+	
+
+	
 
