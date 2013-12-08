@@ -63,9 +63,9 @@ def hits2go(in_file):
 	in_file=open(in_file,"r")
 	results=[]
 	for line in in_file:
-		tmp=line.replace('"',"").split(",")
-		seq_identifier=tmp[0]
-		fandid=hitDef2hit_id(tmp[1]) #stores temporaly field to search a id to search
+		tmp=line.split(",")
+		seq_identifier=tmp[0].replace('""','')
+		fandid=hitDef2hit_id(tmp[1].replace('""','')) #stores temporaly field to search a id to search
 		field_name=fandid[0]
 		hit_id=fandid[1]
 		gos=hit2go(field_name, hit_id)
