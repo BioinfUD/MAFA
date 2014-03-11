@@ -1,17 +1,6 @@
-AGOAMS (Au, 	o 	matic Gene Ontology Annotation for massive sequencing)
-GOAA (Gene Ontology Automatic Anotation)
-AFAMS (Automatic Functional Annotator for Masive Sequencing)
-AFA (Automatic Functional Anotator)
+<h1>MAFA - Massive automatic functional annotation</h1>
 
-
-<h1>GeneOntology-Python</h1>
-
-A set of scripts in python designed to work with Gene Ontology project.
-
-
-En esta artículo se presenta y evalúa _______________ una herramienta bioinformática libre, está diseñada para automatizar y facilitar el proceso de anotación funcional de genomas y transcriptomas a traves de los terminos de Gene Ontology.  Las anotaciones de Gene Ontology son de gran utilidad para entender las funciones asociadas con las secuencias genómicas y transcriptómicas.  ______ permite generar asociaciones masivas de términos de Gene Ontology a genomas y transcriptomas.  _____ además de hacer una anotación funcional de genomas y transcriptomas es capaz de generar diagramas de fácil interpretación para un usuario a partir de una lista de términos en los cuales quiera centrar su investigación. _____ está compuesto de varios pasos los cuales el usuario puede ejecutar uno a la vez o todos de una vez según sea su necesidad.  Al comparar ____ con herramientas como Blast2GO y CateGOrizer se evidenció ______________________.
-
-
+The easy way to do functional annotation of genomes and transcriptomes.
 
 <h2> Setup </h2>
 
