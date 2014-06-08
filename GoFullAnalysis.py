@@ -5,7 +5,7 @@ from datetime import datetime
 from time import sleep
 def usage():
 	print """ This is the wrapper to get the GO distribution from a BLAST result
-	goFullAnalisis.py in_file.fasta wanted_gos out_dir refseq|uniprot
+	goFullAnalisis.py in_file.fasta wanted_gos1,wanted_gos2 out_dir refseq|uniprot
 	"""
 	exit()
 #	GoDistribution.py contigs2go.csv GOswanted Counted_GOs.tab go2contigs.csv
@@ -20,7 +20,7 @@ def main():
 		usage()
 	in_file=sys.argv[1]
 	out_dir=sys.argv[3]
-	gos_buscados=sys.argv[2]
+	gos_buscados=sys.argv[2].split(",")
 	db_blast=sys.argv[4]
 	if db_blast=="refseq":
 		db_blast=Config.nrdb
@@ -61,21 +61,30 @@ def main():
 	ti=datetime.now()
 	hit2go_c=os.system("python Hits2Go.py"+" "+archivo_entrada+" "+hit2terms_file)
 	h2g_time=datetime.now()-ti
-	print "Generating distribution......"
-	ti=datetime.now()
-	goDis_c=os.system("python2 GoDistribution.py"+ " "+ hit2terms_file+" "+gos_buscados+" "+counted_GOs+" "+go2contigs_file)
-	goDis_time=datetime.now()-ti
-	print "Generating Pie Char"
-	charPie=os.system("python2 Utilities/GraphPie.py "+ counted_GOs +" "+ out_img)
-	print "Generating PDF report"
-	try:
-		genPDF=os.system("python2  Utilities/PdfGen.py "+ counted_GOs +" "+ out_pdf+" "+out_img)
-	except:
-		print "Unable to create PDF report"
 	print "Blast execution time: %s , Used database: %s" % (str(td2seconds(blast_time)), sys.argv[4])
 	print "Best hit execution time: %s" % (str(td2seconds(convert_time)))
 	print "Hits 2 GO execution time: %s" % (str(td2seconds(h2g_time)))
-	print "Term distribution execution time %s" % (str(td2seconds(goDis_time))) 
+	print "Generating distributions......"
+	for go_buscado in gos_buscados:
+	    go_in = go_buscado[::-1].split("/")[0][::-1]
+ 	    counted_GOs="%s/Counted_%s.tab" % (out_dir,go_in)
+            go2contigs_file="%s/%s_2_contigs.csv" % (out_dir, go_in)
+            out_img="%s/Pie_%s.png" % (out_dir, go_in)
+            out_pdf="%s/Report_%s.pdf" % (out_dir, go_in)
+	    ti=datetime.now()
+	    print "Generating for %s" % (go_in)
+	    goDis_c=os.system("python2 GoDistribution.py"+ " "+ hit2terms_file+" "+go_buscado+" "+counted_GOs+" "+go2contigs_file)
+      	    goDis_time=datetime.now()-ti
+            print "Go Distribution executing time for %s was %s seconds" % (go_in, str(td2seconds(h2g_time)))
+	    print "Generating Pie Char"
+	    charPie=os.system("python2 Utilities/GraphPie.py "+ counted_GOs +" "+ out_img)
+	    print "Generating PDF report"
+ 	    try:
+		genPDF=os.system("python2  Utilities/PdfGen.py "+ counted_GOs +" "+ out_pdf+" "+out_img)
+	    except:
+		print "Unable to create PDF report"
+
+	#print "Term distribution execution time %s" % (str(td2seconds(goDis_time))) 
 	"""print "Blast execution time: %s , Used database: %s" % (str(blast_time), sys.argv[4])
 	print "Best hit execution time: %s" % (str(convert_time))
 	print "Hits 2 GO execution time: %s" % (str(h2g_time))
