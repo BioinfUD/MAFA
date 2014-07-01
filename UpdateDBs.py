@@ -8,7 +8,10 @@ def rmandupdate():
     cursor=Config.connect()
     print "Deleting mappings"
     query="DROP TABLE mappings_e"
-    cursor.execute(query)
+    try:
+    	cursor.execute(query)
+    except:
+	print "Imposible eliminar tabla"
     print "Removing local database files"
     os.system("rm -rf idmapp* Referen*")
     print "Reinstalling everything"

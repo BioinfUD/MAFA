@@ -4,16 +4,20 @@ import random
 from Bio import SeqIO
 def genDataset(filename, number_seqs, outfile):
     print "Getting %s random sequences from %s" % (number_seqs, filename)
-    secuencias=SeqIO.parse(open(filename, "r"), "fasta")
-    secuencias=list(secuencias)
-    random.shuffle(secuencias)
-    aleatorias=[]
-    for i in range(0, number_seqs):
-        aleatorias.append(secuencias[i])
-    escritras=SeqIO.write(aleatorias, outfile, "fasta")
+    #secuencias=SeqIO.parse(open(filename, "r"), "fasta")
+    #secuencias=list(secuencias)
+    #random.shuffle(secuencias)
+    #aleatorias=[]
+    #for i in range(0, number_seqs):
+     #   aleatorias.append(secuencias[i])
+    #escritras=SeqIO.write(aleatorias, outfile, "fasta")
     return outfile
     
 def usage():
+    print """
+	PerformanceEvaluator.py in_transcriptome.fasta wanted_go1,wanted_go2 outdir uniprot,refseq N1,N2,N3
+	N1,N2,N3 = integers with the amount of sequences to analyse
+	"""
     exit()
     
 def main():
@@ -38,7 +42,7 @@ def main():
             out_pdf="%s/Report.pdf" % out_dir
             salida_csv='%s/query2hits.csv' % out_dir
             salida_xml='%s/query2hits.xml' % out_dir
-            analisiscommand="python2 goFullAnalisis.py %s %s %s %s > %s.log " % (selectedSeq, wanted_gos, out_dir, db_blast, out_dir)
+            analisiscommand="python GoFullAnalysis.py %s %s %s %s > %s.log 2> %s_error.log" % (selectedSeq, wanted_gos, out_dir, db_blast, out_dir, out_dir)
             print "Executing %s " % analisiscommand
             os.system(analisiscommand)
             

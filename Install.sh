@@ -4,7 +4,7 @@ wget ftp://ftp.pir.georgetown.edu/databases/idmapping/idmapping.tb.gz
 echo Uncompressing idmapping.tb
 gunzip idmapping.tb.gz
 echo Writing mapping file to database 
-python mappingsToDB.py idmapping.tb &
+python MappingsToDB.py idmapping.tb &
 echo The process has been sended to background
 #Descarga NR
 mkdir Reference_dbs
