@@ -22,7 +22,7 @@
         </param>
     </inputs>
     <outputs>
-        <param format="pdf" name="output_pdf"  />
+        <data format="pdf" name="output_pdf"  />
     </outputs>
     <tests>
     </tests>
@@ -33,4 +33,4 @@
 
     </help>
 
-</tool>
+</tool/>
