@@ -4,7 +4,7 @@
     	##
     	##Association bettwen hits and GO terms
     	##
-        sh \$MAFA_BASE_DIR/galaxy-plugin/galaxy_wrapper.sh \$MAFA_BASE_DIR/GoDistribution.py $contigs2hits $wanted_gos $counted_gos $go2contigs
+        sh \$MAFA_BASE_DIR/galaxy-plugin/galaxy_wrapper.sh \$MAFA_BASE_DIR/GoDistribution.py $contigs2go $wanted_gos $counted_gos $go2contigs
     	###
     	###
     </command>
@@ -18,8 +18,9 @@
             </param>
     </inputs>
     <outputs>
-        <param format="csv" name="go2contigs" />
-    	<param format="tabular" name="counted_gos" />
+         <data format="csv" name="go2contigs" />
+         <data format="tabular" name="counted_gos" />
+
     </outputs>
     <tests>
     </tests>

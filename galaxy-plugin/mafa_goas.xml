@@ -9,10 +9,10 @@
     	###
     </command>
     <inputs>
-    	<param format="csv" name="contigs2hits" type="data" label="Sequence to hit association file" help="CSV File containing association bettwen Sequences identifiers and Blast Hits (Using Non-redundant or Uniprot databases)"/>
+        <param format="csv" name="contigs2hits" type="data" label="Sequence to hit association file" help="CSV File containing association bettwen Sequences identifiers and Blast Hits (Using Non-redundant or Uniprot databases)"/>
     </inputs>
     <outputs>
-    	<param format="csv" name="contigs2go"  />
+    	<data format="csv" name="contigs2go"  />
     </outputs>
     <tests>
     </tests>
