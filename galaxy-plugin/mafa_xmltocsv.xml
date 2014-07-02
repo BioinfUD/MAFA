@@ -1,0 +1,23 @@
+<tool id="mafa_xmltocsv" name="XML to CSV conversion" version="1.0">
+    <description>MAFA XML to CSV conversion script</description>
+    <command>
+        ##Association bettwen hits and GO terms
+        sh \$MAFA_BASE_DIR/galaxy-plugin/galaxy_wrapper.sh \$MAFA_BASE_DIR/Utilities/BlastXML2CSVCustom.py $blastxml $output
+    </command>
+    <inputs>
+        <param format="xml" name="blastxml" type="data" label="XML BLAST output" help="XML containing BLAST hits"/>
+    </inputs>
+    <outputs>
+        <data format="csv" name="output" />
+    </outputs>
+    <tests>
+    </tests>
+    <help>
+    MAFA is a tool that automates functional annotation of genomes and transcriptomes.
+
+    Check more  info at: https://github.com/bioinfud/MAFA
+
+    </help>
+
+
+</tool>

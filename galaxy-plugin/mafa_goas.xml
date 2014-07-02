@@ -1,0 +1,26 @@
+<tool id="mafa_goas" name="Go Associator" version="1.0">
+    <description>MAFA GO Associator module</description>
+    <command>
+    	##
+    	##Association bettwen hits and GO terms
+    	##
+        sh \$MAFA_BASE_DIR/galaxy-plugin/galaxy_wrapper.sh \$MAFA_BASE_DIR/Hits2Go.py $contigs2hits $contigs2go
+    	###
+    	###
+    </command>
+    <inputs>
+    	<param format="csv" name="contigs2hits" type="data" label="Sequence to hit association file" help="CSV File containing association bettwen Sequences identifiers and Blast Hits (Using Non-redundant or Uniprot databases)"/>
+    </inputs>
+    <outputs>
+    	<param format="csv" name="contigs2go"  />
+    </outputs>
+    <tests>
+    </tests>
+    <help>
+    	MAFA is a tool that automates functional annotation of genomes and transcriptomes.
+
+    	Check more  info at: https://github.com/bioinfud/MAFA
+
+    </help>
+
+</tool>

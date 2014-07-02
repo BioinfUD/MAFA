@@ -1,0 +1,36 @@
+<tool id="mafa_full" name="MAFA Full analysis" version="1.0">
+    <description>MAFA Full analysis module</description>
+    <command>
+    	##
+    	##Association bettwen hits and GO terms
+    	## 
+        python2 \$MAFA_BASE_DIR/galaxy-plugin/mafa_full_wrapper.py $in_fasta $wanted_gos $database $output_pdf
+    	###
+    	###
+    </command>
+    <inputs>
+    	<param format="fasta" name="in_fasta" type="data" label="Sequence to hit association file" help="FASTA input file"/>
+         <param name="wanted_gos" type="select" label="Go Category" >
+                  <options from_file="mafa.loc">
+                      <column name="name" index="0"/>
+                      <column name="value" index="1"/>
+                  </options>
+        </param>
+        <param name="database" type="select" label="DB used against blast" >
+                  <option value="refseq" >Refseq </option>
+                  <option value="uniprot" >Uniprot </option>
+        </param>
+    </inputs>
+    <outputs>
+        <param format="pdf" name="output_pdf"  />
+    </outputs>
+    <tests>
+    </tests>
+    <help>
+    	MAFA is a tool that automates functional annotation of genomes and transcriptomes.
+
+    	Check more  info at: https://github.com/bioinfud/MAFA
+
+    </help>
+
+</tool>
