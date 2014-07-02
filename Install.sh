@@ -1,3 +1,15 @@
+#Descarga Mapeos
+echo Downloading mapping file
+wget ftp://ftp.pir.georgetown.edu/databases/idmapping/idmapping.tb.gz
+echo Uncompressing idmapping.tb
+gunzip idmapping.tb.gz
+echo Writing mapping file to database 
+python MappingsToDB.py idmapping.tb &
+echo The process has been sended to background
+echo Bringing mapping2db process to foregroung
+fg 1
+fg 1
+
 function download_ref_dbs {
 #Descarga NR
 	mkdir Reference_dbs
@@ -15,15 +27,3 @@ function download_ref_dbs {
 	echo Creating index
 	makeblastdb -in uniprot_sprot.fasta -dbtype prot
 }
-
-#Descarga Mapeos
-echo Downloading mapping file
-wget ftp://ftp.pir.georgetown.edu/databases/idmapping/idmapping.tb.gz
-echo Uncompressing idmapping.tb
-gunzip idmapping.tb.gz
-echo Writing mapping file to database 
-python MappingsToDB.py idmapping.tb &
-echo The process has been sended to background
-echo Bringing mapping2db process to foregroung
-fg 1
-fg 1
