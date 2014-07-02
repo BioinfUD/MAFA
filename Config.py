@@ -6,18 +6,20 @@ import MySQLdb
 import multiprocessing
 
 global nrdb,updb,max_threads
-nrdb="Reference_dbs/nr"
-updb="Reference_dbs/uniprot_sprot.fasta"
-max_threads=12
+nrdb = "Reference_dbs/nr"
+updb = "Reference_dbs/uniprot_sprot.fasta"
+max_threads = 12
+
 
 def connect():
 	#DBSettings
-	host="localhost"
-	user="root"
-	password="6nu"
-	db_name="genetix"
+	host = "localhost"
+	user = "root"
+	password = "6nu"
+	db_name = "genetix"
+	port = 3306
 	try:
-		db=MySQLdb.connect(host=host,user=user,passwd=password,db=db_name)
+		db = MySQLdb.connect(host=host, user=user, passwd=password, db=db_name, port=port)
 		try: 
 			db.autocommit(True)
 		except:
